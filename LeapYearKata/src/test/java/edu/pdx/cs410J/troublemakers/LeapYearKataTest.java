@@ -1,5 +1,6 @@
 package edu.pdx.cs410J.troublemakers;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -15,5 +16,27 @@ import static org.hamcrest.core.IsEqual.equalTo;
 public class LeapYearKataTest
 {
 
+    @Test
+    public void year400IsALeapYear() {
+        assertThat(LeapYearKata.isLeapYear(400), equalTo(true));
+    }
+
+    @Test
+    public void year401IsNotALeapYear() {
+        assertThat(LeapYearKata.isLeapYear(401), equalTo(false));
+
+    }
+
+
+    @Test
+    public void ifIsDivisibleBy400ReturnTrue() {
+        assertThat(LeapYearKata.isLeapYear(400), equalTo(true));
+    }
+
+    @Test
+    public void year2020IsAValidLeapYear() {
+        assertThat(LeapYearKata.isLeapYear(2020), equalTo(true));
+
+    }
 
 }
