@@ -14,5 +14,17 @@ import static org.hamcrest.core.StringContains.containsString;
  */
 public class LeapYearKataIT extends InvokeMainTestCase {
 
+    @Test
+    public void programExitsWithErrorIfNoArgsPassed() {
+        InvokeMainTestCase.MainMethodResult result = invokeMain(LeapYearKata.class);
+        assertThat(result.getExitCode(), equalTo(1));
+        assertThat(result.getTextWrittenToStandardError(), containsString("Missing command line args: Please enter a year."));
+    }
 
+    @Test
+    public void programOutputsConfirmationThatYearIsLeapYear() {
+        InvokeMainTestCase.MainMethodResult result = invokeMain(LeapYearKata.class, "400");
+        assertThat(result.getExitCode(), equalTo(0));
+        assertThat(result.getTextWrittenToStandardOut(), containsString("400 is a leap year!"));
+    }
 }
