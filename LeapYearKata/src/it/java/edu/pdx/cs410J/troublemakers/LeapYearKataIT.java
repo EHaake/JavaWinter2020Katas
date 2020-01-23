@@ -22,9 +22,31 @@ public class LeapYearKataIT extends InvokeMainTestCase {
     }
 
     @Test
-    public void programOutputsConfirmationThatYearIsLeapYear() {
+    public void programExitsWithErrorIfInvalidArgIsSupplied() {
+        InvokeMainTestCase.MainMethodResult result = invokeMain(LeapYearKata.class, "Not a year");
+        assertThat(result.getExitCode(), equalTo(1));
+        assertThat(result.getTextWrittenToStandardError(), containsString("Not a year is not a valid year."));
+    }
+
+    @Test
+    public void aNegativeYearIsInvalid() {
+        InvokeMainTestCase.MainMethodResult result = invokeMain(LeapYearKata.class, "-300");
+        assertThat(result.getExitCode(), equalTo(1));
+        assertThat(result.getTextWrittenToStandardError(), containsString("-300 is not a valid year."));
+    }
+
+    @Test
+    public void programOutputsConfirmationThatYear400IsLeapYear() {
         InvokeMainTestCase.MainMethodResult result = invokeMain(LeapYearKata.class, "400");
         assertThat(result.getExitCode(), equalTo(0));
         assertThat(result.getTextWrittenToStandardOut(), containsString("400 is a leap year!"));
     }
+
+    @Test
+    public void programOutputsConfirmationThatYear401IsNotLeapYear() {
+        InvokeMainTestCase.MainMethodResult result = invokeMain(LeapYearKata.class, "401");
+        assertThat(result.getExitCode(), equalTo(0));
+        assertThat(result.getTextWrittenToStandardOut(), containsString("401 is not a leap year!"));
+    }
+
 }

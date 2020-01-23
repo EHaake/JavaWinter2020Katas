@@ -24,9 +24,7 @@ public class LeapYearKataTest
     @Test
     public void year401IsNotALeapYear() {
         assertThat(LeapYearKata.isLeapYear(401), equalTo(false));
-
     }
-
 
     @Test
     public void ifIsDivisibleBy400ReturnTrue() {
@@ -36,7 +34,16 @@ public class LeapYearKataTest
     @Test
     public void year2020IsAValidLeapYear() {
         assertThat(LeapYearKata.isLeapYear(2020), equalTo(true));
+    }
 
+    @Test
+    public void year2018IsNotAValidLeapYear() {
+        assertThat(LeapYearKata.isLeapYear(2018), equalTo(false));
+    }
+
+    @Test
+    public void year200IsNotAValidLeapYear() {
+        assertThat(LeapYearKata.isLeapYear(200), equalTo(false));
     }
 
 }
