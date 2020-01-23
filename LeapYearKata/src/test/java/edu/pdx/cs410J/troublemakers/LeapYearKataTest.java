@@ -4,6 +4,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsEqual.equalTo;
@@ -44,6 +45,11 @@ public class LeapYearKataTest
     @Test
     public void year200IsNotAValidLeapYear() {
         assertThat(LeapYearKata.isLeapYear(200), equalTo(false));
+    }
+
+    @Test
+    public void year100IsNotAValidLeapYear() {
+        assertThat(LeapYearKata.isLeapYear(100), equalTo(false));
     }
 
 }
